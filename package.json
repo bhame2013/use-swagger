@@ -1,14 +1,14 @@
 {
   "name": "use-swagger",
   "version": "0.0.9",
-  "description": "",
+  "description": "A hook for generating and using Swagger client types in React TypeScript applications.",
   "type": "commonjs",
-  "main": "./dist/index",
-  "module": "./dist/index",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/bhame2013/use-swagger.git"
   },
   "scripts": {
     "deploy": "npm version patch && npm publish",
@@ -19,18 +19,26 @@
     "LICENSE",
     "README.md"
   ],
+  "keywords": [
+    "swagger",
+    "typescript",
+    "react",
+    "hook",
+    "api"
+  ],
   "author": "bhame2013",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.12.12",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
     "copyfiles": "^2.4.1",
     "tsc-alias": "^1.8.10",
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "@types/react": "^18.3.12",
-    "@types/react-dom": "^18.3.1",
     "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "zustand": "^5.0.0"
   }
 }
