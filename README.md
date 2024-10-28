@@ -28,9 +28,9 @@ const fs = require("fs");
 const { generateSwaggerTypes } = require("use-swagger");
 
 generateSwaggerTypes({
-  fs,
-  fsPath: "./src/presentation/client/swagger_client.ts",
-  swaggerUrl: "https://.../swagger.json"
+  fs, // Importante: o 'fs' é uma dependência necessária para manipular arquivos no sistema // npm install fs
+  fsPath: "./client/swagger_client.ts", // Caminho onde o arquivo será injetado ao rodar o script
+  swaggerUrl: "https://.../swagger.json" // URL do seu arquivo swagger.json, que contém as definições das APIs
 });
 ```
 
@@ -47,11 +47,11 @@ Para facilitar a geração dos tipos, adicione o seguinte script ao seu `package
 npm run generateSwagger
 ```
 
-### Passo 5: Criar o Cliente
+### Passo 4: Criar o Cliente
 
 Agora, crie um arquivo chamado `client.ts` na mesma pasta `client` que você criou anteriormente.
 
-### Passo 6: Configurar `client.ts`
+### Passo 5: Configurar `client.ts`
 
 No arquivo `client.ts`, adicione o seguinte código:
 
