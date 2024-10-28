@@ -74,7 +74,7 @@ export const { client, useSwagger } = createClient<Swagger>({
 
 ### Passo 6 (Caso vá usar o useSwagger como hook): Configurar `app.tsx`
 
-No arquivo `client.ts`, adicione o seguinte código:
+No arquivo `app.tsx`, adicione o seguinte código:
 
 ```typescript
 import { QueryClientSwaggerContextProvider } from "use-swagger";
