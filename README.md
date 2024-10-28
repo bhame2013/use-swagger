@@ -72,6 +72,22 @@ export const { client, useSwagger } = createClient<Swagger>({
 });
 ```
 
+### Passo 6 (Caso vá usar o useSwagger como hook): Configurar `app.tsx`
+
+No arquivo `client.ts`, adicione o seguinte código:
+
+```typescript
+import { QueryClientSwaggerContextProvider } from "use-swagger";
+
+...
+  
+  <QueryClientSwaggerContextProvider> 
+    ...
+  </QueryClientSwaggerContextProvider>
+
+...
+```
+
 ## 🛠️ Casos de Uso
 
 Após configurar o cliente, você pode utilizá-lo para fazer requisições à sua API. Abaixo está um exemplo simples de como usar o `client`:

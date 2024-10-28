@@ -7,7 +7,7 @@ import { QueryStoreProps, QueryStoreState, QueryStoreType } from './interfaces'
 
 export const QueryClientContext = createContext<QueryStoreType | null>(null)
 
-function QueryClientContextProvider({ children, ...props }:  React.PropsWithChildren<QueryStoreProps>) {
+function QueryClientSwaggerContextProvider({ children, ...props }:  React.PropsWithChildren<QueryStoreProps>) {
   const storeRef = useRef<QueryStoreType>()
 
   if (!storeRef.current) {
@@ -27,7 +27,7 @@ function useQueryClient<T>(selector: (state: QueryStoreState) => T): T {
   return useStore(store, selector)
 }
 
-export { QueryClientContextProvider, useQueryClient }
+export { QueryClientSwaggerContextProvider, useQueryClient }
 
 
 
