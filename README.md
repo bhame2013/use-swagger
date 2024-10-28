@@ -30,7 +30,7 @@ const { generateSwaggerTypes } = require("use-swagger");
 generateSwaggerTypes({
   fs,
   fsPath: "./src/presentation/client/swagger_client.ts",
-  swaggerUrl: "https://api-raiox.amazity.com.br/swagger/v1/swagger.json"
+  swaggerUrl: "https://.../swagger.json"
 });
 ```
 
