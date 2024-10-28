@@ -24,11 +24,13 @@ Siga os passos abaixo para integrar **use-swagger** em seu projeto e gerar tipos
 No arquivo `generate.ts`, adicione o seguinte código:
 
 ```javascript
+const fs = require("fs");
 const { generateSwaggerTypes } = require("use-swagger");
 
 generateSwaggerTypes({
-  fsPath: "./swagger_client.ts", // Define o caminho para o arquivo de saída
-  swaggerUrl: "https://.../swagger.json", // URL do seu arquivo Swagger
+  fs,
+  fsPath: "./src/presentation/client/swagger_client.ts",
+  swaggerUrl: "https://api-raiox.amazity.com.br/swagger/v1/swagger.json"
 });
 ```
 
