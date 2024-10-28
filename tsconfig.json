@@ -14,7 +14,7 @@
     "esModuleInterop": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
-    "resolveJsonModule": true // Enables JSON imports
+    "resolveJsonModule": true 
   },
   "afterDeclarations": true
 }
