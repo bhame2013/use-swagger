@@ -28,9 +28,9 @@ const mapOpenApiTypeToTS = (prop, array) => {
 }
 
 export function generateInterfacesOpenApi(openApiDocument: OpenAPIObject) {
-  const schemas = openApiDocument.components.schemas
+  const schemas = openApiDocument?.components?.schemas
 
-  return Object.keys(schemas)
+  return Object.keys(schemas || {})
     .map((schemaName) => {
       const schema = schemas[schemaName] as SchemaObject
       const properties = schema.properties || {}
