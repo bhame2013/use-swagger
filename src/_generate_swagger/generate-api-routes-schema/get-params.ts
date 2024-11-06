@@ -1,13 +1,13 @@
 import { OperationObject, ParameterObject, SchemaObject } from '../openapi-interfaces'
 
-function formatType(type: string) {
+function formatType(type: string, isRequired: boolean) {
   switch (type) {
     case 'integer':
-      return 'number'
-    default: return type
+      return 'number';
+    default:
+      return isRequired ? type : `${type} | undefined`; 
   }
 }
-
 export function getParams(methodInfo: OperationObject) {
   const params = methodInfo?.parameters || []
 
@@ -17,7 +17,9 @@ export function getParams(methodInfo: OperationObject) {
 
     const typedParam = paramObject?.schema as SchemaObject
 
-    obj[param.name] = formatType(typedParam.type) || 'unknown'
+    const isRequired = paramObject.required ?? false; 
+
+    obj[param.name] = formatType(typedParam.type, isRequired) || 'unknown'
 
     return obj
   }, {})
