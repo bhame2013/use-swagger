@@ -6,7 +6,6 @@ function simplifySchema(
   noMappedImports: string[],
   openApi: OpenAPIObject,
 ): any {
-  console.log(schema)
   if ((schema as any)?.['$ref']) {
     const referenceObject = schema as ReferenceObject
 
@@ -49,6 +48,7 @@ function generateMethodsString(
       const paramsString = params
         ? JSON.stringify(simplifySchema(params, noMappedImports, openApi))?.replace(/"/g, '')
         : 'null'
+
       const requestBodyString = requestBody
         ? JSON.stringify(simplifySchema(requestBody, noMappedImports, openApi))?.replace(/"/g, '')
         : 'null'
@@ -72,10 +72,9 @@ export function generateOpenApiClient(routesApi: RouteApi, imports: string, open
     })
     .join(',\n')
 
+  const noMappedImportsReduced = noMappedImports.reduce((r, item) => (r ? r + ',' : '') + item, '')
+
   return `import {${
-    imports + ',' + noMappedImports.reduce((r, item) => (r ? r + ',' : '') + item, '')
-  }} from "@/backend" \n\n export type Swagger = {\n${apiLiteral}\n};`
+    imports + (noMappedImportsReduced && noMappedImportsReduced.length > 0 ? ',' + noMappedImportsReduced : '')
+  }} from "@/back-end" \n\n export type Swagger = {\n${apiLiteral}\n};`
 }
-
-
-

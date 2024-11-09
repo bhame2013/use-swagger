@@ -10,13 +10,13 @@ function getMethodsList(methods: PathItemObject) {
   return Object.keys(methods).reduce((reducerMethod, method) => {
     const methodInfo = methods[method] as OperationObject;
 
-    const params = getParams(methodInfo);
+    const params = getParams(methodInfo) as any;
     const result = getResult(methodInfo);
     const requestBody = getRequestBody(methodInfo);
 
     const methodData = {
       [method]: {
-        params,
+        params: params.params,
         requestBody,
         result,
       },

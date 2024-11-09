@@ -1,3 +1,6 @@
-const { generateSwaggerTypes } = require("./_generate_swagger");
+const fs = require("fs");
+const { generateSwaggerTypesNextJs } = require("./_generate_swagger_next_api");
 
-generateSwaggerTypes(undefined, "https:/.../swagger/v1/swagger.json")
+const openApiDocument = require("./swagger.json")
+
+generateSwaggerTypesNextJs({ fs, openApiDocument  })

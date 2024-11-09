@@ -1,0 +1,687 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Documentation",
+    "version": "1.0.0",
+    "description": "Documentação da API"
+  },
+  "paths": {
+    "/Appointment": {
+      "post": {
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AppointmentPostDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AppointmentResultDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Authentication": {
+      "post": {
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "emailAddress": "string",
+                  "password": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "token": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Companies": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/companies"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/companies"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/companies"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/companies"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "params",
+            "in": "query",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "CompanyId": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Companies/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "params",
+            "in": "query",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/companies"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Practitioners": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/practitioners"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/practitioners"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/practitioners"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "PractitionerId": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Products": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/products"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/products"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/products"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/products"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "ProductId": "string"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Shosp/detail-patient": {
+      "get": {
+        "parameters": [
+          {
+            "name": "params",
+            "in": "query",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "codigoPaciente": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShospAgendaGetPorPaciente"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Shosp/prestadores": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Users/me": {
+      "get": {
+        "parameters": [],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "$ref": "#/components/schemas/users"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/Users": {
+      "get": {
+        "parameters": [
+          {
+            "name": "params",
+            "in": "query",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "RoleId": "string",
+                "CompanyId": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ResponseGetUserDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/users"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/users"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "parameters": [
+          {
+            "name": "params",
+            "in": "query",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "UserId": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "ok": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "companies": {
+        "type": "object",
+        "properties": {
+          "CompanyId": "number",
+          "CompanyName": "string",
+          "Address": "string",
+          "ContactEmail": "string",
+          "PhoneNumber": "string",
+          "CreditCount": "number",
+          "MaxAppointmentPerMonth": "number",
+          "isDeleted": "boolean"
+        }
+      },
+      "companycredittransactions": {
+        "type": "object",
+        "properties": {
+          "TransactionId": "number",
+          "CompanyId": "number",
+          "UserId": "number",
+          "OrderId": "number",
+          "CreditsUsed": "number",
+          "TransactionDate": "Date"
+        }
+      },
+      "orderitems": {
+        "type": "object",
+        "properties": {
+          "OrderItemId": "number",
+          "OrderId": "number",
+          "ProductId": "number",
+          "Quantity": "number",
+          "UnitPrice": "number"
+        }
+      },
+      "orderlogs": {
+        "type": "object",
+        "properties": {
+          "OrderLogId": "number",
+          "OrderId": "number",
+          "LogDate": "Date",
+          "OrderStatusId": "number",
+          "Notes": "string"
+        }
+      },
+      "orderpaymenttypes": {
+        "type": "object",
+        "properties": {
+          "OrderPaymentTypeId": "number",
+          "OrderId": "number",
+          "PaymentTypeId": "number",
+          "Amount": "number",
+          "PaymentDate": "Date"
+        }
+      },
+      "orders": {
+        "type": "object",
+        "properties": {
+          "OrderId": "number",
+          "UserId": "number",
+          "CompanyId": "number",
+          "OrderDate": "Date",
+          "OrderStatusId": "number"
+        }
+      },
+      "orderstatuses": {
+        "type": "object",
+        "properties": {
+          "OrderStatusId": "number",
+          "StatusName": "string"
+        }
+      },
+      "paymenttypes": {
+        "type": "object",
+        "properties": {
+          "PaymentTypeId": "number",
+          "PaymentTypeName": "string"
+        }
+      },
+      "practitioners": {
+        "type": "object",
+        "properties": {
+          "Image": "string",
+          "PractitionerId": "number",
+          "FirstName": "string",
+          "LastName": "string",
+          "Specialty": "string",
+          "Email": "string",
+          "PhoneNumber": "string",
+          "ProductId": "number",
+          "ShospId": "string",
+          "isDeleted": "boolean"
+        }
+      },
+      "products": {
+        "type": "object",
+        "properties": {
+          "ProductId": "number",
+          "ProductName": "string",
+          "Price": "number",
+          "Description": "string",
+          "PriceCredit": "number",
+          "isDeleted": "boolean"
+        }
+      },
+      "userroles": {
+        "type": "object",
+        "properties": {
+          "RoleId": "number",
+          "RoleName": "string"
+        }
+      },
+      "users": {
+        "type": "object",
+        "properties": {
+          "Phone": "string",
+          "Birthday": "Date",
+          "Avatar": "string",
+          "UserId": "number",
+          "FirstName": "string",
+          "LastName": "string",
+          "Email": "string",
+          "PasswordHash": "string",
+          "RoleId": "number",
+          "CompanyId": "number",
+          "isDeleted": "boolean",
+          "idShosp": "string",
+          "shospJSON": "string"
+        }
+      }
+    }
+  }
+}

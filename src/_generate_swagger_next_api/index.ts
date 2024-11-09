@@ -16,8 +16,6 @@ export async function generateSwaggerTypesNextJs({
 }) {
   let openApiDocumentFinal = openApiDocument
 
-  console.log(openApiDocument)
-
   if (!openApiDocument && !swaggerUrl) {
     throw new Error('Either openApiDocument or swaggerUrl must be provided.')
   }
