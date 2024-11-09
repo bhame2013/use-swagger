@@ -10,8 +10,10 @@ function formatType(type: string, isRequired: boolean) {
       return isRequired ? type : `${type} | undefined`; 
   }
 }
+
 export function getParams(methodInfo: OperationObject) {
   const params = methodInfo?.parameters || []
+
 
   return params.reduce((obj, param: any) => {
 
@@ -30,9 +32,10 @@ export function getParams(methodInfo: OperationObject) {
 function processProperties(properties: Record<string, ReferenceObject | SchemaObject>, requiredFields: string[] = []): Record<string, any> {
   return Object.entries(properties).reduce((result, [key, value]: any) => {
     const isRequired = requiredFields.includes(key);
+
     result[key] = value.properties
       ? processProperties(value.properties, value.required || [])
-      : formatType(value.type, isRequired) || 'unknown';
+      : formatType(value?.type || value, isRequired) || 'unknown';
     return result;
   }, {} as Record<string, any>);
 }

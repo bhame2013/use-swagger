@@ -1,4 +1,4 @@
-import {companies,companycredittransactions,orderitems,orderlogs,orderpaymenttypes,orders,orderstatuses,paymenttypes,practitioners,products,userroles,users,AppointmentPostDto,AppointmentResultDto,ShospAgendaGetPorPaciente,ResponseGetUserDto} from "@/back-end" 
+import {companies,companycredittransactions,orderitems,orderlogs,orderpaymenttypes,orders,orderstatuses,paymenttypes,practitioners,products,userroles,users,AppointmentPostDto,AppointmentResultDto,LoadScheduleProfessional,ShospAgendaGetPorPaciente,ResponseGetUserDto} from "@/back-end" 
 
  export type Swagger = {
   "/Appointment": {
@@ -32,14 +32,14 @@ import {companies,companycredittransactions,orderitems,orderlogs,orderpaymenttyp
       result: {}
     },
     delete: {
-      params: {CompanyId:undefined | undefined},
+      params: {CompanyId:string | undefined},
       requestBody: null,
       result: {}
     }
   },
   "/Companies/{id}": {
     get: {
-      params: {id:undefined | undefined},
+      params: {id:string | undefined},
       requestBody: null,
       result: companies
     }
@@ -88,9 +88,16 @@ import {companies,companycredittransactions,orderitems,orderlogs,orderpaymenttyp
       result: {ok:boolean}
     }
   },
+  "/Shosp/agenda": {
+    get: {
+      params: {codigoPrestador:string | undefined},
+      requestBody: null,
+      result: LoadScheduleProfessional
+    }
+  },
   "/Shosp/detail-patient": {
     get: {
-      params: {codigoPaciente:undefined | undefined},
+      params: {codigoPaciente:string | undefined},
       requestBody: null,
       result: ShospAgendaGetPorPaciente
     }
@@ -111,7 +118,7 @@ import {companies,companycredittransactions,orderitems,orderlogs,orderpaymenttyp
   },
   "/Users": {
     get: {
-      params: {RoleId:undefined | undefined,CompanyId:undefined | undefined},
+      params: {RoleId:string | undefined,CompanyId:string | undefined},
       requestBody: null,
       result: ResponseGetUserDto[]
     },
@@ -126,7 +133,7 @@ import {companies,companycredittransactions,orderitems,orderlogs,orderpaymenttyp
       result: {ok:boolean}
     },
     delete: {
-      params: {UserId:undefined | undefined},
+      params: {UserId:string | undefined},
       requestBody: null,
       result: {ok:boolean}
     }

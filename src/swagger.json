@@ -374,6 +374,33 @@
         }
       }
     },
+    "/Shosp/agenda": {
+      "get": {
+        "parameters": [
+          {
+            "name": "params",
+            "in": "query",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "codigoPrestador": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoadScheduleProfessional"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/Shosp/detail-patient": {
       "get": {
         "parameters": [
