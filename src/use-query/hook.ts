@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useEffect, useState} from 'react'
 
 import { useQueryClient } from './context'
 import { FetcherParams, QueryOptions, QueryState } from './interfaces'
@@ -8,18 +8,14 @@ export type useQueryProps<T> = {
   queryFn: (params?: any) => T
 } & QueryOptions
 
-export function useQuery<T>({
-  enabled = true,
-  queryKey,
-  queryFn,
-  interval,
-  enableCache,
-  onError,
-}: useQueryProps<T>) {
+export function useQuery<T>({ enabled = true, queryKey, queryFn, interval, enableCache, onError }: useQueryProps<T>) {
+  const [useQueryIsReady, setUseQueryIsReady] = useState(false);
+
   const KEY = queryKey?.toString()
 
   const cache = useQueryClient((state) => state.cache[KEY])
   const mutateQuery = useQueryClient((state) => state.mutate)
+  const eventQueryClient = useQueryClient((state) => state.event)
 
   async function fetcher({ get }: FetcherParams) {
     try {
@@ -63,6 +59,7 @@ export function useQuery<T>({
   }
 
   useEffect(() => {
+
     if (enabled) {
       if (cache && enableCache && !cache?.error) {
         return
@@ -71,13 +68,22 @@ export function useQuery<T>({
       const query = mutateQuery(KEY, startQueryState)
 
       if (interval) {
-        if(!cache?.mutate)
-        setInterval(() => query.mutate(), interval)
-      }else {
+        if (!cache?.mutate) setInterval(() => query.mutate(), interval)
+      } else {
         query.mutate()
       }
     }
+
+    setUseQueryIsReady(true)
   }, [KEY, enabled])
+
+  useEffect(() => {
+    if (eventQueryClient?.includes("clearCache") && !cache && useQueryIsReady) {
+     const query = mutateQuery(KEY, startQueryState)
+
+      query.mutate()
+    }
+  }, [eventQueryClient, cache])
 
   return (cache ? { ...cache, changeCache } : startQueryState) as Required<QueryState<Awaited<T>>>
 }

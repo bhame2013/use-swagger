@@ -1,6 +1,7 @@
 import { queryStore } from './store'
 
 type QueryStoreProps<T = any> = {
+  event?: string;
   cache?: { [key: string]: QueryState<T> }
 }
 

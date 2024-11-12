@@ -1,12 +1,15 @@
 import { createStore } from 'zustand'
 import { QueryStoreProps, QueryStoreState } from './interfaces'
 
+
 export const queryStore = (_?: Partial<QueryStoreProps>) => {
   return createStore<QueryStoreState>()((set, get) => ({
     cache: {},
+    event: "",
     clearCache: () => {
       set((state) => ({
         ...state,
+        event: "clearCache" + String(Math.random()),
         cache: Object.keys(state.cache).reduce(
           (reducer, key) => ({ ...reducer, [key]: null}), {},
         ),
