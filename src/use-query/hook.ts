@@ -85,5 +85,5 @@ export function useQuery<T>({ enabled = true, queryKey, queryFn, interval, enabl
     }
   }, [eventQueryClient, cache])
 
-  return (cache ? { ...cache, changeCache } : startQueryState) as Required<QueryState<Awaited<T>>>
+  return (cache ? { ...cache, mutate: cache?.mutate || startQueryState?.mutate, changeCache } : startQueryState) as Required<QueryState<Awaited<T>>>
 }
