@@ -38,7 +38,7 @@ export const queryStore = (_?: Partial<QueryStoreProps>) => {
       if (cache[value] && cache[value].mutate) {
         await cache[value].mutate({ get })
 
-        return get()['cache'][value]?.data as E
+        return get()?.['cache']?.[value]?.data as E
       }
 
       return null

@@ -1,6 +1,6 @@
 {
   "name": "use-swagger",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "A hook for generating and using Swagger client types in React TypeScript applications.",
   "type": "commonjs",
   "main": "./dist/index.js",

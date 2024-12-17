@@ -17,14 +17,14 @@ export function useQuery<T>({ enabled = true, queryKey, queryFn, interval, enabl
   const mutateQuery = useQueryClient((state) => state.mutate)
   const eventQueryClient = useQueryClient((state) => state.event)
 
-  async function fetcher({ get }: FetcherParams) {
+  async function fetcher(params: FetcherParams) {
     try {
       if (enabled !== undefined && !enabled) {
         await mutateQuery(KEY, { data: null, isFetching: false, isLoading: false, error: null })
         return
       }
 
-      const queryState = get && get()['cache'][KEY]
+      const queryState = params?.get && params?.get()['cache'][KEY]
 
       await mutateQuery(KEY, {
         isFetching: true,
