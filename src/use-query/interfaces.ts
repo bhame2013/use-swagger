@@ -11,7 +11,7 @@ export type QueryState<T = any> = {
   data?: T
   isFetching?: boolean
   isLoading?: boolean
-  mutate?: (params?: FetcherParams) => void
+  mutate?: (params?: FetcherParams & any) => void
   error?: any
   changeCache?: (data: any) => void;
 }
@@ -20,7 +20,6 @@ export type QueryOptions = {
   enableCache?: boolean
   interval?: number;
   enabled?: boolean;
-  onError?: (err: any) => void;
 }
 
 interface QueryStoreState<T = any> extends QueryStoreProps {
